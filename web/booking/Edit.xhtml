@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BookingEditDlg" widgetVar="BookingEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBookingTitle}">
+            <h:form id="BookingEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bookingController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBookingLabel_bookingId}" for="bookingId" />
+                        <p:inputText id="bookingId" value="#{bookingController.selected.bookingId}" title="#{bundle.EditBookingTitle_bookingId}" required="true" requiredMessage="#{bundle.EditBookingRequiredMessage_bookingId}"/>
+                        <p:outputLabel value="#{bundle.EditBookingLabel_arrivalDate}" for="arrivalDate" />
+                        <p:calendar id="arrivalDate" pattern="MM/dd/yyyy" value="#{bookingController.selected.arrivalDate}" title="#{bundle.EditBookingTitle_arrivalDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBookingLabel_returnDate}" for="returnDate" />
+                        <p:calendar id="returnDate" pattern="MM/dd/yyyy" value="#{bookingController.selected.returnDate}" title="#{bundle.EditBookingTitle_returnDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBookingLabel_paymentDate}" for="paymentDate" />
+                        <p:calendar id="paymentDate" pattern="MM/dd/yyyy" value="#{bookingController.selected.paymentDate}" title="#{bundle.EditBookingTitle_paymentDate}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBookingLabel_totalPrice}" for="totalPrice" />
+                        <p:inputText id="totalPrice" value="#{bookingController.selected.totalPrice}" title="#{bundle.EditBookingTitle_totalPrice}" />
+                        <p:outputLabel value="#{bundle.EditBookingLabel_userId}" for="userId" />
+                        <p:selectOneMenu id="userId" value="#{bookingController.selected.userId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userIdItem"
+                                           itemValue="#{userIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBookingLabel_locationId}" for="locationId" />
+                        <p:selectOneMenu id="locationId" value="#{bookingController.selected.locationId}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{locationController.itemsAvailableSelectOne}"
+                                           var="locationIdItem"
+                                           itemValue="#{locationIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bookingController.update}" value="#{bundle.Save}" update="display,:BookingListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BookingEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BookingEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

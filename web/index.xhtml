@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Welcome to Scuba Duba Do</title>
+        <h:outputStylesheet name="css/home.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/mainContainer.xhtml">
+            <ui:define name="body">
+                <ui:include src="/template/header.xhtml"/>
+                <ui:include src="/template/navigation.xhtml"/>
+
+                <p:panel styleClass="centered-panel">
+                    <p:graphicImage library="images" name="tropical.jpg" style="max-height: 20%; width: auto; display: block; margin-left: auto; margin-right: auto;"/>
+                    <h2>Welcome to Scuba Duba Do!</h2>
+
+                    <p>Your passport to undersea exploration. We know what it takes to plunge into the vibrant beauty below the surface.</p>
+                    <p>We don't just rent scuba diving gear; we provide a diving experience tailored to every type of marine enthusiast. Whether you're a beginner diver, a seasoned professional, or someone simply passionate about the underwater world, Scuba Duba Do is here to serve as your reliable co-pilot.</p>
+                    <p>Unleash your sense of adventure with our premium scuba diving equipment. Crafted with attention to the smallest detail, our gear will empower you to uncover the captivating marine life with confidence and peace of mind. We've got everything you need for your underwater journey!</p>
+                </p:panel>
+                <p:panel styleClass="centered-panel" rendered="#{userSession.user.isAdmin}">
+                    <p:outputLabel rendered="#{userSession.user.isAdmin}">Welcome, admin!</p:outputLabel>
+                    <br />
+                    <h:link outcome="/booking/List" value="Show All Bookings" rendered="#{userSession.user.isAdmin}" />
+                    <br />
+                    <h:link outcome="/bookingItem/List" value="Show All Booking Items" rendered="#{userSession.user.isAdmin}" />
+                    <br />
+                    <h:link outcome="/category/List" value="Show All Categories" rendered="#{userSession.user.isAdmin}" />
+                    <br />
+                    <h:link outcome="/item/List" value="Show All Items" rendered="#{userSession.user.isAdmin}" />
+                    <br />
+                    <h:link outcome="/location/List" value="Show All Locations" rendered="#{userSession.user.isAdmin}" />
+                    <br />
+                    <h:link outcome="/user/List" value="Show All Users" rendered="#{userSession.user.isAdmin}"/>
+                    <br />
+
+                </p:panel>
+                <ui:include src="/template/footer.xhtml"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

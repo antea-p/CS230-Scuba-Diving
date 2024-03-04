@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BookingItemViewDlg" widgetVar="BookingItemViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBookingItemTitle}">
+            <h:form id="BookingItemViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bookingItemController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBookingItemLabel_quantity}"/>
+                        <h:outputText value="#{bookingItemController.selected.quantity}" title="#{bundle.ViewBookingItemTitle_quantity}"/>
+                        <h:outputText value="#{bundle.ViewBookingItemLabel_booking}"/>
+                        <h:outputText value="#{bookingItemController.selected.booking}" title="#{bundle.ViewBookingItemTitle_booking}"/>
+                        <h:outputText value="#{bundle.ViewBookingItemLabel_item}"/>
+                        <h:outputText value="#{bookingItemController.selected.item}" title="#{bundle.ViewBookingItemTitle_item}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BookingItemViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

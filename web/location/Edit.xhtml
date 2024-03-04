@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LocationEditDlg" widgetVar="LocationEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLocationTitle}">
+            <h:form id="LocationEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{locationController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLocationLabel_locationId}" for="locationId" />
+                        <p:inputText id="locationId" value="#{locationController.selected.locationId}" title="#{bundle.EditLocationTitle_locationId}" required="true" requiredMessage="#{bundle.EditLocationRequiredMessage_locationId}"/>
+                        <p:outputLabel value="#{bundle.EditLocationLabel_name}" for="name" />
+                        <p:inputText id="name" value="#{locationController.selected.name}" title="#{bundle.EditLocationTitle_name}" />
+                        <p:outputLabel value="#{bundle.EditLocationLabel_zipCode}" for="zipCode" />
+                        <p:inputText id="zipCode" value="#{locationController.selected.zipCode}" title="#{bundle.EditLocationTitle_zipCode}" />
+                        <p:outputLabel value="#{bundle.EditLocationLabel_country}" for="country" />
+                        <p:inputText id="country" value="#{locationController.selected.country}" title="#{bundle.EditLocationTitle_country}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{locationController.update}" value="#{bundle.Save}" update="display,:LocationListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LocationEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LocationEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

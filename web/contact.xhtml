@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Contact Us</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/template/mainContainer.xhtml">
+            <ui:define name="body">
+                <ui:include src="/template/header.xhtml"/>
+                <ui:include src="/template/navigation.xhtml"/>
+                <p:panel styleClass="centered-panel no-border">
+                    <h2>Contact Us</h2>
+                    <h:panelGrid columns="2" cellpadding="20" style="width:125%;">
+                        <div>
+                            You can reach us at:
+                            <p>Scuba Duba Do Shop</p>
+                            <p>123 Surf Lane</p>
+                            <p>Beach City, ST 12345</p>
+                            <p>Phone: (123) 456-7890</p>
+                            <p>Email: support@scubadubado.com</p>
+                        </div>
+                        <!-- Contact Form -->
+                        <div>
+                            <h:form id="contactForm">
+                                <p:panelGrid columns="2">
+                                    <f:facet name="formHeader">
+                                        Contact Form
+                                    </f:facet>
+                                    <h:outputLabel value="Name:" for="nameField" />
+                                    <p:inputText id="nameField" styleClass="ui-outputlabel" required="true"/>
+
+                                    <h:outputLabel value="Email:" for="emailField"/>
+                                    <p:inputText id="emailField" styleClass="ui-outputlabel" required="true"/>
+
+                                    <h:outputLabel value="Title" for="titleField"/>
+                                    <p:inputText id="titleField" styleClass="ui-outputlabel" required="true"/>
+
+                                    <h:outputLabel value="Message:" for="messageArea"/>
+                                    <p:inputTextarea id="messageArea" styleClass="ui-outputlabel" required="true"/>
+
+                                    <f:facet name="footer">
+                                        <div style="text-align: center;">
+                                            <p:commandButton type="button" value="Send" icon="ui-icon" />
+                                        </div>
+                                    </f:facet>
+
+                                </p:panelGrid>
+                            </h:form>
+                        </div>
+                    </h:panelGrid>
+                </p:panel>
+                <ui:include src="/template/footer.xhtml"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

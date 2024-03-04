@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/mainContainer.xhtml">
+            <ui:define name="body">
+                <ui:include src="/template/header.xhtml"/>
+                <ui:include src="/template/navigation.xhtml"/>
+                <p:panel styleClass="centered-panel">
+                    <h:form>
+                        <h3>Login</h3>
+                        <p:panelGrid id="loginGrid" columns="3">
+                            <p:outputLabel for="username" value="Username:" />
+                            <p:inputText id="username" label="Username"
+                                         required="true" 
+                                         value="#{loginController.username}"/>
+                            <p:message for="username"/>
+
+                            <p:outputLabel for="password" value="Password:" />
+                            <p:password id="password" label="Password" 
+                                        required="true"
+                                        value="#{loginController.password}" />
+                            <p:message for="password" />
+                        </p:panelGrid>
+                        <p:messages />
+                        <br />
+                        <p:commandButton value="Login"
+                                         action="#{loginController.login}"
+                                         ajax="false"/>
+
+                    </h:form>
+                </p:panel>
+                <ui:include src="/template/footer.xhtml"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

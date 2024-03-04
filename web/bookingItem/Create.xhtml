@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BookingItemCreateDlg" widgetVar="BookingItemCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBookingItemTitle}">
+            <h:form id="BookingItemCreateForm">
+                <h:panelGroup id="display">
+<!--                    TODO: update form (remove Id as it's autoincrement, add required for everything else. Do this on other forms too.-->
+                    <p:panelGrid columns="2" rendered="#{bookingItemController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBookingItemLabel_quantity}" for="quantity" />
+                        <p:inputText id="quantity" value="#{bookingItemController.selected.quantity}" title="#{bundle.CreateBookingItemTitle_quantity}" required="true" requiredMessage="#{bundle.CreateBookingItemRequiredMessage_quantity}"/>
+                        <p:outputLabel value="#{bundle.CreateBookingItemLabel_booking}" for="booking" />
+                        <p:selectOneMenu id="booking" value="#{bookingItemController.selected.booking}" required="true" requiredMessage="#{bundle.EditBookingItemRequiredMessage_booking}">
+                            <f:selectItems value="#{bookingController.itemsAvailableSelectOne}"
+                                           var="bookingItem"
+                                           itemValue="#{bookingItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBookingItemLabel_item}" for="item" />
+                        <p:selectOneMenu id="item" value="#{bookingItemController.selected.item}" required="true" requiredMessage="#{bundle.EditBookingItemRequiredMessage_item}">
+                            <f:selectItems value="#{itemController.itemsAvailableSelectOne}"
+                                           var="itemItem"
+                                           itemValue="#{itemItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bookingItemController.create}" value="#{bundle.Save}" update="display,:BookingItemListForm:datalist,:growl" oncomplete="handleSubmit(args,'BookingItemCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BookingItemCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

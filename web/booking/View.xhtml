@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BookingViewDlg" widgetVar="BookingViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBookingTitle}">
+            <h:form id="BookingViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bookingController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBookingLabel_bookingId}"/>
+                        <h:outputText value="#{bookingController.selected.bookingId}" title="#{bundle.ViewBookingTitle_bookingId}"/>
+                        <h:outputText value="#{bundle.ViewBookingLabel_arrivalDate}"/>
+                        <h:outputText value="#{bookingController.selected.arrivalDate}" title="#{bundle.ViewBookingTitle_arrivalDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBookingLabel_returnDate}"/>
+                        <h:outputText value="#{bookingController.selected.returnDate}" title="#{bundle.ViewBookingTitle_returnDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBookingLabel_paymentDate}"/>
+                        <h:outputText value="#{bookingController.selected.paymentDate}" title="#{bundle.ViewBookingTitle_paymentDate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBookingLabel_totalPrice}"/>
+                        <h:outputText value="#{bookingController.selected.totalPrice}" title="#{bundle.ViewBookingTitle_totalPrice}"/>
+                        <h:outputText value="#{bundle.ViewBookingLabel_userId}"/>
+                        <h:outputText value="#{bookingController.selected.userId}" title="#{bundle.ViewBookingTitle_userId}"/>
+                        <h:outputText value="#{bundle.ViewBookingLabel_locationId}"/>
+                        <h:outputText value="#{bookingController.selected.locationId}" title="#{bundle.ViewBookingTitle_locationId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BookingViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

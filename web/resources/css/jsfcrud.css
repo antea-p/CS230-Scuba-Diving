@@ -1,0 +1,189 @@
+.main-container {
+    /*    max-width: 70% !important; 
+        max-height: 1000px !important; 
+        margin: auto !important; */
+    min-height: calc(100vh - 200px) !important;
+    width: 960px !important;
+    margin-bottom: 75px !important;
+    padding: 10px !important;
+}
+
+body {
+    background-color: #FAF3E0;
+    color: #383838;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.centered-panel {
+    margin: auto;
+    margin-bottom: 20px; 
+    min-height: 200px;
+    width: 70%;
+    border: 1px solid #91C7B1;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: #FFF3F8;
+    overflow: auto; 
+}
+
+.welcome-text {
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+h2 {
+    text-align: center;
+    color: #C291D3;
+    padding: 10px 0;
+}
+
+h3 {
+    color: #C291D3;
+    padding: 10px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 5px 0;
+}
+
+a {
+    color: #616C6F;
+}
+
+a:hover {
+    color: #383838;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.about-section {
+    margin: 20px 0;
+}
+
+.about-section h2 {
+    color: #333;
+    font-size: 1.6em;
+}
+
+.about-section .about-intro,
+.about-section .about-story {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.about-timeline {
+    margin: 20px 0;
+}
+
+.about-timeline h3 {
+    color: #333;
+    font-size: 1.4em;
+}
+
+.about-timeline ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.about-timeline ul li {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.about-facts {
+    margin: 20px 0;
+}
+
+.about-facts h3 {
+    color: #333;
+    font-size: 1.4em;
+}
+
+.about-facts ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.about-facts ol li {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.about-ending {
+    margin: 20px 0;
+}
+
+.about-ending p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.booking-section {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.booking-details {
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.booking-ending {
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.item-details {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.add-cart-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.add-cart-button:hover {
+    background-color: #0056b3;
+}
+
+.ui-widget {
+    font-size: 12px !important;
+}
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow: visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+.ui-button {
+    margin-top: 10px !important;
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>About Us</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/template/mainContainer.xhtml">
+            <ui:define name="body">
+                <ui:include src="/template/header.xhtml"/>
+                <ui:include src="/template/navigation.xhtml"/>
+                <p:panel styleClass="centered-panel">
+                    <div class="about-section">
+                        <h2>About Us</h2>
+                        <p class="about-intro">In a time not so long ago, three amiable amigos were caught by the spell of the sea's hypnotic sway. They found joy in every curve of the wave, every sea-salt spray, and every golden sunset they rode into. Surfing was their game, and boy, did they love to play!</p>
+
+                        <p class="about-story">Honing their craft, they began to speak the language of the surf. Each wave became a chapter in their rip-roaring narrative, a dance with the ocean that always ended with an exhilarating 'Woohoo!'</p>
+
+                        <p class="about-story">From their frothy fun sprang Surf Shop, a nook of nautical delights. Born from the thrill of surfing and the camaraderie of three mates, it's not just a store, it's a dream caught on a longboard and ridden all the way to the shore.</p>
+                    </div>
+
+                    <div class="about-timeline">
+                        <h3>Our Journey</h3>
+                        <ul>
+                            <li>2015 - The first wave ridden, a lifelong passion sparked.</li>
+                            <li>2022 - The amigos, now masters of the surf, concoct a plan over a beach bonfire.</li>
+                            <li>2023 - Scuba Duba Do makes its grand debut, promising a sea of possibilities.</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-facts">
+                        <h3>Fun Facts</h3>
+                        <ol>
+                            <li>Our founders have surfed a combined total of 15,000 hours - that's a lot of sea spray! When the founders of Surf Shop aren't riding waves or concocting plans, they're busy perfecting their secret recipe for the ultimate wave-catching potion. Rumor has it that it's a magical blend of saltwater, moonlight, and just a pinch of stardust.
+                            </li>
+                            <li>Every year, Surf Shop hosts a wacky surfing competition known as the "Fins and Funnies Festival." Surfers from around the world gather to showcase their unique tricks while wearing the quirkiest costumes imaginable. It's a spectacle of laughter, flips, and a few unexpected belly flops, all in the name of pure, unadulterated fun.
+                            </li>
+                            <li>Surf Shop's founders are so connected to the sea that they can predict the tides with uncanny accuracy. Legend has it that they have a secret seashell tucked away in their office, which whispers the ebb and flow of the ocean's rhythms directly into their ears.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="about-ending">
+                        <p>So come, join the fun at Surf Shop, where every day is a celebration of sun, surf, and sea-loving spirits!</p>
+                    </div>
+
+                    <p:graphicImage library="images" name="boat.png" style="width: auto; display: block; margin-left: auto; margin-right: auto;"/>
+
+                </p:panel>
+                <ui:include src="/template/footer.xhtml"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+</html>

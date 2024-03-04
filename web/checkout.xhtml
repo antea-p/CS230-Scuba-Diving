@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Checkout</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/mainContainer.xhtml">
+            <ui:define name="body">
+                <ui:include src="/template/header.xhtml"/>
+                <ui:include src="/template/navigation.xhtml"/>
+                <p:panel styleClass="centered-panel">
+                    <br />
+                    <h:form id="checkoutForm">
+                        <h2>Checkout</h2>
+                        <div id="form-group">
+                            <h:panelGrid columns="3" cellpadding="5">
+
+                                <p:outputLabel value="Name: " for="firstName" />
+                                <p:inputText id="firstName" label="Name"
+                                             value="#{checkoutPageController.firstName}" 
+                                             styleClass="ui-outputlabel"
+                                             required="true"
+                                             validator="nameValidator"/>
+                                <p:message for="firstName"/>
+
+                                <p:outputLabel value="Surname: " for="surname" />
+                                <p:inputText id="surname" label="Surname"
+                                             value="#{checkoutPageController.surname}" 
+                                             styleClass="ui-outputlabel" 
+                                             required="true"
+                                             validator="nameValidator"/>
+                                <p:message for="surname"/>
+
+                                <p:outputLabel value="Street address: " for="streetAddress"/>
+                                <p:inputText id="streetAddress" label="Street address"
+                                             value="#{checkoutPageController.streetAddress}" 
+                                             styleClass="ui-outputlabel"
+                                             required="true"
+                                             validator="streetAddressValidator"/>
+                                <p:message for="streetAddress"/>
+
+                                <p:outputLabel value="City: " for="city" />
+                                <p:inputText id="city" label="City"
+                                             value="#{checkoutPageController.city}" 
+                                             styleClass="ui-outputlabel"
+                                             required="true"
+                                             validator="nameValidator"/>
+                                <p:message for="city"/>
+
+                                <p:outputLabel value="Zipcode: " for="zipcode" />
+                                <p:inputText id="zipcode" label="Zipcode"
+                                             value="#{checkoutPageController.zipcode}" 
+                                             styleClass="ui-outputlabel" 
+                                             required="true"
+                                             validator="zipcodeValidator"/>
+                                <p:message for="zipcode"/>
+
+
+                                <p:outputLabel for="country" value="Country:" />
+                                <p:selectOneMenu id="country" required="true">
+                                    <f:selectItems value="#{checkoutPageController.countries}" />
+                                </p:selectOneMenu>
+                                <p:message for="country"/>
+
+
+                                <p:outputLabel value="Phone: " for="phone"/>
+                                <p:inputText id="phone" label="Phone"
+                                             value="#{checkoutPageController.phone}" 
+                                             styleClass="ui-outputlabel"
+                                             required="true" 
+                                             validator="phoneNumberValidator"/>
+                                <p:message for="phone"/>
+
+                            </h:panelGrid>
+
+
+                            <!-- https://docs.oracle.com/javaee/6/javaserverfaces/2.1/docs/vdldocs/facelets/f/selectItems.html -->
+                            <!--                    TODO Change Data in DB
+                                                    Style the buttons nicely
+                                                    Add placeholder images-->
+
+                            <h:panelGrid id="locationPanel" columns="3" cellpadding="5">
+                                <p:outputLabel value="Selected: #{checkoutPageController.selectedLocation.name}" for="locationPick"/>
+                                <ui:repeat id="locationPick" value="#{checkoutPageController.travelDestinations}" var="destinationItem">
+                                    <p:commandButton value="#{destinationItem.zipCode} #{destinationItem.name}, #{destinationItem.country}" 
+                                                     action="#{checkoutPageController.setTravelDestinationId(destinationItem.locationId)}"
+                                                     update=":checkoutForm:locationPanel" immediate="true"> 
+                                        <!--                                    immediate="true" prema dokumentaciji ima potencijalne nuspojave, no to je jedino što
+                                                                            u ovom slučaju ispravno ažurira izabranu lokaciju u slučaju kada druga polja imaju required="true"-->
+                                    </p:commandButton>
+
+                                </ui:repeat>
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <p:outputLabel value="Notes: " for="notes" />
+                                <p:inputTextarea id="notes" label="Notes" 
+                                                 value="#{checkoutPageController.notes}" styleClass="ui-outputlabel" />
+                            </h:panelGrid>
+
+                        </div>
+                        <br />
+                        <b><h:outputLabel value="Subtotal: " /></b>
+                        <h:outputText value="$#{checkoutPageController.subtotal}"/>
+                        <b><h:outputLabel value="Shipping: " /></b>
+                        <h:outputText value="$#{checkoutPageController.shippingCosts}"/>
+                        <b><h:outputLabel value="Grand total: " /></b>
+                        <h:outputText value="$#{checkoutPageController.grandTotal}"/>
+                        <br />
+                        <p:commandButton value="Confirm" action="#{checkoutPageController.submit}" update="@form"/>
+                    </h:form>
+                </p:panel>
+                <ui:include src="/template/footer.xhtml"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

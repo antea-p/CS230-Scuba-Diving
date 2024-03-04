@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <style>
+            .nav-item {
+                margin-left: 1px;
+                margin-right: 10px;
+            }
+
+
+            .nav-bar-flex {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                box-sizing: border-box;  /* padding i border su ukljuceni u width */
+            }
+
+            .nav-bar-flex > li {
+                flex: 1;
+                text-align: center;
+                box-sizing: border-box;  /* isto kao gore */
+            }
+
+            .flex-spacer {
+                flex-grow: 2;
+            }
+
+            .cart-icon {
+                margin-right: 5px;  
+                margin-left: 15px;  
+            }
+
+            .truncate-username {
+                max-width: 150px; 
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+        </style>
+    </h:head>
+    <h:body>
+        <h:form id="navbarForm">
+            <p:menubar styleClass="nav-bar-flex">
+                <p:menuitem styleClass="nav-item" value="Home" url="index.xhtml"/>
+                <p:menuitem styleClass="nav-item" value="Courses" url="/faces/category.xhtml?id=1"/>
+                <p:menuitem styleClass="nav-item" value="Equipment" url="/faces/category.xhtml?id=2"/>
+                <p:menuitem styleClass="nav-item" value="Boats" url="/faces/category.xhtml?id=3"/>
+                <p:menuitem styleClass="nav-item" value="Misc" url="/faces/category.xhtml?id=4"/>               
+                <p:menuitem styleClass="nav-item" value="Contact" url="/faces/contact.xhtml"/>
+                <p:menuitem styleClass="nav-item" value="About" url="/faces/about.xhtml"/>
+                <p:menuitem styleClass="flex-spacer" disabled="true"/>
+                <p:menuitem styleClass="nav-item" icon="ui-icon-cart cart-icon" value="My Cart" url="/faces/shoppingCart.xhtml"/>
+
+                <p:menuitem value="#{userSession.user.isAdmin ? '&lt;Admin&gt; ' : ''}#{userSession.user.username}"
+                            styleClass="truncate-username"
+                            rendered="#{userSession.user != null}" 
+                            style="color: #4f4f4f" 
+                            disabled="true"/>
+                <p:menuitem value="Logout" 
+                            action="#{logoutController.logout}" 
+                            rendered="#{userSession.user != null}"
+                            styleClass="nav-item"/>
+                
+                <p:menuitem value="Login" 
+                            url="/faces/login.xhtml" 
+                            rendered="#{userSession.user == null}" 
+                            styleClass="nav-item"/>
+                <p:menuitem value="Register" 
+                            url="/faces/register.xhtml" 
+                            rendered="#{userSession.user == null}" 
+                            styleClass="nav-item"/>
+            </p:menubar>
+        </h:form>
+    </h:body>
+</html>
